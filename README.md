@@ -1,5 +1,5 @@
 # Instabot
-A python bot to auto like posts of defined list of hashtags on instagram.
+A python bot to auto like posts of defined list of hashtags on instagram. The set of hashtags included in the code relate to most popular hashtags relating to stock market.
 
 # STEPS:
 1. Checkout the Instabot repo in your local workspace.
