@@ -8,4 +8,5 @@ A python bot to auto like posts of defined list of hashtags on instagram. The se
 4. Add the path of the downloaded and extracted executable to PATH variable OR Move the geckodriver executable to
   * MAC-OS : /usr/local/bin/
   * Windows: C:\Windows\system32\
-5. Run python instabot.py
+5. Set username and password in instabot.py file.
+6. Run python instabot.py
