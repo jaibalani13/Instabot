@@ -36,7 +36,7 @@ class InstaBot:
 
         # gathering photos
         pic_hrefs = []
-        for i in range(1, 10):
+        for i in range(1, 3):
             try:
                 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 time.sleep(2)
@@ -61,14 +61,17 @@ class InstaBot:
                 time.sleep(random.randint(2, 4))
                 try:
                     driver.find_element_by_xpath("//*[@aria-label='Like']")
+                except (NoSuchElementException, ValueError) as e:
+                    print("Already liked")
+                    continue
+                try:
                     likes = driver.find_element_by_xpath(
                         '//*[@id="react-root"]/section/main/div/div[1]/article/div[3]/section[2]/div/div/button/span')
                     if int(likes.text) > 10:
                         print(">10 likes")
                         continue
                 except (NoSuchElementException, ValueError) as e:
-                    print("Already liked")
-                    continue
+                    print("Likes not found")
                 driver.find_element_by_xpath("//*[@aria-label='Like']").click()
                 self.photos_liked += 1
                 if self.photos_liked % 50 == 0:
@@ -84,8 +87,8 @@ class InstaBot:
 
 if __name__ == "__main__":
 
-    username = "USERNAME"
-    password = "PASSWORD"
+    username = "stocksadvisor"
+    password = "Piyujai#1"
 
     ig = InstaBot(username, password)
     ig.login()
