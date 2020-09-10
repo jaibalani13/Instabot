@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
-import time
+import time, datetime
 import random
 
 class InstaBot:
@@ -55,6 +55,7 @@ class InstaBot:
         print(pic_hrefs)
         unique_photos = len(pic_hrefs)
         for pic_href in pic_hrefs:
+            print("time: %s" % datetime.datetime.now())
             driver.get(pic_href)
             time.sleep(2)
             try:
@@ -74,11 +75,11 @@ class InstaBot:
                     print("Likes not found")
                 driver.find_element_by_xpath("//*[@aria-label='Like']").click()
                 self.photos_liked += 1
-                if self.photos_liked % 50 == 0:
+                if self.photos_liked % 25 == 0:
                     print("Sleeping")
                     time.sleep(60*30)
                 print("liked: %s" % self.photos_liked)
-                time.sleep(18)
+                time.sleep(20)
 
             except Exception as e:
                 print(e)
