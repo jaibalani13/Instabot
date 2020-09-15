@@ -68,11 +68,12 @@ class InstaBot:
                 try:
                     likes = driver.find_element_by_xpath(
                         '//*[@id="react-root"]/section/main/div/div[1]/article/div[3]/section[2]/div/div/button/span')
-                    if int(likes.text) > 10:
-                        print(">10 likes")
+                    if int(likes.text) > 20:
+                        print(">20 likes")
                         continue
                 except (NoSuchElementException, ValueError) as e:
                     print("Likes not found")
+                    continue
                 driver.find_element_by_xpath("//*[@aria-label='Like']").click()
                 self.photos_liked += 1
                 if self.photos_liked % 25 == 0:
@@ -96,28 +97,29 @@ if __name__ == "__main__":
 
     hashtags = ['stockmarket',
                 'trading', 'stockmarketnews', 'bse', 'stocks', 'banknifty', 'stockmarketindia', 'nifty', 'sensex', 'intraday', 'finance',
-                'intradaytrading', 'indiansharemarket', 'money', 'investor', 'india', 'dalalstreet', 'niftyfifty',
-                'warrenbuffet', 'sharemarkettips', 'bigprofits', 'billionaire', 'binaryoptions', 'bitcoin', 'bsesensex',
+                'intradaytrading', 'indiansharemarket', 'investor', 'dalalstreet', 'niftyfifty',
+                'warrenbuffet', 'sharemarkettips', 'bigprofits', 'billionaire', 'binaryoptions', 'bsesensex',
                 'business', 'candlesticks', 'coronav', 'cryptocurrency', 'dalalstreet2020', 'daytrader', 'daytrading',
                 'earnfromhome', 'economy', 'entrepreneur', 'entrepreneurship', 'equity', 'equitymarket', 'financeblogs',
                 'financial', 'financialadvice', 'financialcourse', 'financialeducation', 'financialfreedom',
                 'financiallearning', 'financialliteracy', 'financialmarket', 'financialmarketlearning',
                 'financialmarkets', 'followbackinstantly', 'followers', 'followforfollowback', 'forex',
-                'forexlifestyle', 'forexsignals', 'forextrader', 'forextrading', 'freedom', 'fundamentalanalysis',
+                'forexlifestyle', 'forexsignals', 'forextrader', 'forextrading', 'fundamentalanalysis',
                 'futuresandoptions', 'indiafightscorona', 'indianstock', 'indianstockadvisor', 'indianstockexchange',
                 'instagram', 'intradaytrader', 'invest', 'laptopincome', 'laptopmoney', 'learning', 'lifestyle',
-                'makemoneyonline', 'market', 'marketcap', 'marketnews', 'markets', 'mcx', 'millionaire',
-                'millionairebyage', 'motivation', 'nationalstockexchange', 'nifty50', 'niftygenius', 'ns10', 'nseindia',
+                'makemoneyonline', 'marketcap', 'marketnews', 'mcx', 'millionaire',
+                'millionairebyage', 'nationalstockexchange', 'nifty50', 'niftygenius', 'nseindia',
                 'nsemumbai', 'nyse', 'onlinejobsworkfromhome', 'options', 'optionstrading', 'optiontrader',
-                'pricepatterns', 'profit', 'radhakishandamani', 'rakeshjhunjhunwala', 'rakeshjunjunwala', 'richest',
-                'sanbun', 'sensexindia', 'sensextoday', 'share', 'stockanalytics', 'stockedge',
+                'pricepatterns', 'profit', 'radhakishandamani', 'rakeshjhunjhunwala', 'rakeshjunjunwala',
+                'sanbun', 'sensexindia', 'sensextoday', 'stockanalytics', 'stockedge',
                 'stockedgekarosmartinvestorbano', 'stockexchange', 'stockmarketeducation', 'StockMarketIndia',
                 'stockmarketinvesting', 'stockmarketmemes', 'stockmarketquotes', 'stockmarkets', 'stockresearch',
-                'stocktrader', 'success', 'swingtrading', 'technicalanalysis', 'trade', 'trader', 'traderslife📈📉',
-                'tradingforex', 'tradingstocks', 'vijaykedia', 'wallstreet', 'warrenbuffett', 'wealth', 'work',
+                'stocktrader', 'swingtrading', 'technicalanalysis', 'trader', 'traderslife📈📉',
+                'tradingforex', 'tradingstocks', 'vijaykedia', 'wallstreet', 'warrenbuffett',
                 'zerodha']
 
-    for hashtag in hashtags:
+    while True:
+        hashtag = random.choice(hashtags)
         try:
             ig.like_photos_of_hashtag(hashtag)
             time.sleep(30 * 60)
